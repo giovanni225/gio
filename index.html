@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gio's Mega Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,105 +17,139 @@
             align-items: center;
             height: 100vh;
         }
-    .container {
-        background-color: #1a1a1a;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 750px;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    h1 {
-        color: #007bff;
-        font-size: 1.8em;
-        margin-bottom: 20px;
-    }
-
-    .input-wrapper {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        flex-wrap: wrap; /* Added this line to allow wrapping */
-        align-items: center; /* Added this line to vertically center the input-container */
-    }
-
-    .input-container {
-        background-color: #333;
-        padding: 15px;
-        border-radius: 8px;
-        width: 45%;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 30%;
-    }
-
-    .input-container.secondary { /* New class for the second input-container */
-        height: 30%; /* Adjusted height for the second input-container */
-    }
-
-    textarea, input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        background-color: #444;
-        color: #fff;
-        margin-bottom: 10px;
-        transition: background-color 0.3s ease;
-        box-sizing: border-box;
-    }
-
-    textarea:focus, input[type="text"]:focus {
-        background-color: #555;
-        outline: none;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-
-    #fund {
-        margin-top: 20px;
-    }
-
-    @media (max-width: 768px) {
         .container {
-            width: 90%;
-        }
-
-        .input-wrapper {
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 750px;
+            border-radius: 8px;
+            display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            text-align: center;
         }
-
+        h1 {
+            color: #007bff;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .input-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            align-items: center;
+        }
         .input-container {
-            width: 100%;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            width: 45%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 30%;
         }
-
         .input-container.secondary {
-            width: 100%;
-            height: auto;
+            height: 30%;
         }
-    }
-</style>
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #444;
+            color: #fff;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        textarea:focus, input[type="text"]:focus {
+            background-color: #555;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #fund {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+        .insta-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #e1306c;
+            position: absolute;
+            right: 0;
+            width: 150px;
+            height: 50px;
+        }
+        .insta-link .icon,
+        .insta-link .text {
+            position: absolute;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .insta-link .icon {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .insta-link:hover .icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .insta-link .text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .insta-link:hover .text {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            .input-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .input-container {
+                width: 100%;
+            }
+            .input-container.secondary {
+                width: 100%;
+                height: auto;
+            }
+            #fund {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .insta-link {
+                position: relative;
+                right: auto;
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -130,18 +165,65 @@
                 <button onclick="downloadResults()">Download Results</button>
             </div>
         </div>
-        <div id="fund">Found: <span id="fundCount">0</span></div>
+        <div id="fund">
+            Found: <span id="fundCount">0</span>
+            <a href="https://www.instagram.com/Giovanni_c.o" class="insta-link" target="_blank">
+                <div class="text">
+                    By: Gio
+                </div>
+                <div class="icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </a>
+        </div>
     </div>
-<script>
-    function search() {
-        // ...
-    }
+    <script>
+      function search() {
+          var text = document.getElementById("textInput").value;
+          var searchTerm = document.getElementById("searchInput").value;
+          var lines = text.split("\n");
+          var finalResults = [];
+          var count = 0;
 
-    function downloadResults() {
-        // ...
-    }
-</script>
+          for (var i = 0; i < lines.length; i++) {
+              if (lines[i].indexOf(searchTerm) !== -1) {
+                  var match = lines[i].match(/^(.*?\| Total Space: 50\.0GB)/); // Extracts part before "Total Space: 50.0GB"
+                  if (match) {
+                      finalResults.push(match[1].trim());
+                      count++;
+                  }
+              }
+          }
 
-<textarea id="results" style="display:none;"></textarea>
+          updateFundCount(count);
+          saveResults(finalResults.join("\n"));
+      }
+
+      function updateFundCount(count) {
+          var fundCount = document.getElementById("fundCount");
+          fundCount.textContent = count;
+      }
+
+      function saveResults(results) {
+          var resultsContainer = document.getElementById("results");
+          resultsContainer.value = results;
+      }
+
+      function downloadResults() {
+          var resultsText = document.getElementById("results").value;
+          var fileName = document.getElementById("fileNameInput").value.trim();
+
+          if (resultsText && fileName) {
+              var blob = new Blob([resultsText], { type: "text/plain" });
+              var a = document.createElement("a");
+              a.href = URL.createObjectURL(blob);
+              a.download = fileName + ".txt";
+              a.click();
+          } else {
+              alert("Please enter a filename and perform a search to download results.");
+          }
+      }
+  </script>
+    <textarea id="results" style="display:none;"></textarea>
 </body>
 </html>
