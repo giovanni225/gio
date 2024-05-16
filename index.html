@@ -16,160 +16,279 @@
             align-items: center;
             height: 100vh;
         }
+    .container {
+        background-color: #1a1a1a;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 750px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
+    h1 {
+        color: #007bff;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .input-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .input-container {
+        background-color: #333;
+        padding: 15px;
+        border-radius: 8px;
+        width: 45%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-container.secondary { /* New class for the second input-container */
+        height: 30%; /* Adjusted height for the second input-container */
+    }
+
+    textarea, input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #444;
+        color: #fff;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    textarea:focus, input[type="text"]:focus {
+        background-color: #555;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #fund {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
         .container {
-            background-color: #1a1a1a;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 750px; /* Adjusted width */
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        h1 {
-            color: #007bff;
-            font-size: 1.8em; /* Adjusted font size */
-            margin-bottom: 20px;
+            width: 90%;
         }
 
         .input-wrapper {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .input-container {
-            background-color: #333;
-            padding: 15px; /* Adjusted padding */
-            border-radius: 8px;
-            width: 45%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        textarea, input[type="text"] {
             width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #444;
-            color: #fff;
-            margin-bottom: 10px;
-            transition: background-color 0.3s ease;
-            box-sizing: border-box;
         }
 
-        textarea:focus, input[type="text"]:focus {
-            background-color: #555;
-            outline: none;
-        }
-
-        button {
+        .input-container.secondary {
             width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            height: auto;
         }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        #fund {
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-            }
-
-            .input-wrapper {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .input-container {
-                width: 100%;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <div class="container">
-        <h1>Mgea Search</h1>
+        <h1>Gio's Mega Search</h1>
         <div class="input-wrapper">
             <div class="input-container">
                 <textarea id="textInput" rows="8" placeholder="Paste text here..."></textarea>
                 <input type="text" id="searchInput" placeholder="Enter search term...">
                 <button onclick="search()">Search</button>
             </div>
-            <div class="input-container">
+            <div class="input-container secondary">
                 <input type="text" id="fileNameInput" placeholder="Enter filename...">
                 <button onclick="downloadResults()">Download Results</button>
             </div>
         </div>
         <div id="fund">Found: <span id="fundCount">0</span></div>
     </div>
+<script>
+    function search() {
+        // ...
+    }
 
-    <script>
-        function search() {
-            var text = document.getElementById("textInput").value;
-            var searchTerm = document.getElementById("searchInput").value;
-            var lines = text.split("\n");
-            var finalResults = [];
-            var count = 0;
+    function downloadResults() {
+        // ...
+    }
+</script>
 
-            for (var i = 0; i < lines.length; i++) {
-                if (lines[i].indexOf(searchTerm) !== -1) {
-                    var match = lines[i].match(/^(.*?\| Total Space: 50\.0GB)/); // Extracts part before "Total Space: 50.0GB"
-                    if (match) {
-                        finalResults.push(match[1].trim());
-                        count++;
-                    }
-                }
-            }
+<textarea id="results" style="display:none;"></textarea>
+</body>
+</html>
+Now, the second box on the right has a smaller vertical size, as requested.
+person more_vertnot bad but i want it now to be in the center instead of it being atthe top i like the size tho so dont change that
+Contact Photo more_vertI understand your request. I've made the necessary changes to vertically center the input-container within the .input-wrapper. Here is the updated code:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gio's Mega Search</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    .container {
+        background-color: #1a1a1a;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 750px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-            updateFundCount(count);
-            saveResults(finalResults.join("\n"));
+    h1 {
+        color: #007bff;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .input-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap; /* Added this line to allow wrapping */
+        align-items: center; /* Added this line to vertically center the input-container */
+    }
+
+    .input-container {
+        background-color: #333;
+        padding: 15px;
+        border-radius: 8px;
+        width: 45%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 30%;
+    }
+
+    .input-container.secondary { /* New class for the second input-container */
+        height: 30%; /* Adjusted height for the second input-container */
+    }
+
+    textarea, input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #444;
+        color: #fff;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    textarea:focus, input[type="text"]:focus {
+        background-color: #555;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #fund {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
         }
 
-        function updateFundCount(count) {
-            var fundCount = document.getElementById("fundCount");
-            fundCount.textContent = count;
+        .input-wrapper {
+            flex-direction: column;
+            gap: 20px;
         }
 
-        function saveResults(results) {
-            var resultsContainer = document.getElementById("results");
-            resultsContainer.value = results;
+        .input-container {
+            width: 100%;
         }
 
-        function downloadResults() {
-            var resultsText = document.getElementById("results").value;
-            var fileName = document.getElementById("fileNameInput").value.trim();
-
-            if (resultsText && fileName) {
-                var blob = new Blob([resultsText], { type: "text/plain" });
-                var a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
-                a.download = fileName + ".txt";
-                a.click();
-            } else {
-                alert("Please enter a filename and perform a search to download results.");
-            }
+        .input-container.secondary {
+            width: 100%;
+            height: auto;
         }
-    </script>
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gio's Mega Search</h1>
+        <div class="input-wrapper">
+            <div class="input-container">
+                <textarea id="textInput" rows="8" placeholder="Paste text here..."></textarea>
+                <input type="text" id="searchInput" placeholder="Enter search term...">
+                <button onclick="search()">Search</button>
+            </div>
+            <div class="input-container secondary">
+                <input type="text" id="fileNameInput" placeholder="Enter filename...">
+                <button onclick="downloadResults()">Download Results</button>
+            </div>
+        </div>
+        <div id="fund">Found: <span id="fundCount">0</span></div>
+    </div>
+<script>
+    function search() {
+        // ...
+    }
 
-    <textarea id="results" style="display:none;"></textarea>
+    function downloadResults() {
+        // ...
+    }
+</script>
+
+<textarea id="results" style="display:none;"></textarea>
 </body>
 </html>
